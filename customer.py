@@ -66,7 +66,8 @@ class Customer:
 
         return statement
 
-    def get_price(self, rental):
+    @staticmethod
+    def get_price(rental):
         # compute rental change
         amount = 0
         if rental.get_movie().get_price_code() == Movie.REGULAR:
