@@ -65,14 +65,3 @@ class Customer:
         """Calculate the total frequent rental points for all rentals."""
         return sum(rental.get_rental_points() for rental in self.rentals)
 
-    # def rental_points(self, frequent_renter_points, rental):
-    #     # compute the frequent renter points based on movie price code
-    #     if rental.get_movie().get_price_code() == Movie.NEW_RELEASE:
-    #         # New release earns 1 point per day rented
-    #         frequent_renter_points += rental.get_days_rented()
-    #     else:
-    #         # Other rentals get only 1 point
-    #         frequent_renter_points += 1
-    #     #  add a detail line to statement
-    #     return frequent_renter_points
-
