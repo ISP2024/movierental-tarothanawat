@@ -42,13 +42,13 @@ class Customer:
         rental_fmt = "{:40s}  {:6d} {:6.2f}\n"
 
         for rental in self.rentals:
-            frequent_renter_points = rental.rental_points()
             statement += rental_fmt.format(
                             rental.get_movie().get_title(),
                             rental.get_days_rented(),
                             rental.get_price())
 
         # footer: summary of charges
+        frequent_renter_points = self.get_total_rental_points()
         total_amount = self.get_total_amount()
         statement += "\n"
         statement += "{:40s}  {:6s} {:6.2f}\n".format(
@@ -60,6 +60,10 @@ class Customer:
     def get_total_amount(self):
         """Calculate the total charge for the current rentals."""
         return sum(rental.get_price() for rental in self.rentals)
+
+    def get_total_rental_points(self):
+        """Calculate the total frequent rental points for all rentals."""
+        return sum(rental.get_rental_points() for rental in self.rentals)
 
     # def rental_points(self, frequent_renter_points, rental):
     #     # compute the frequent renter points based on movie price code
