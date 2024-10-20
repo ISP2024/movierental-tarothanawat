@@ -1,4 +1,5 @@
 ## Movie Rental Refactoring
+[![Autograding Tests](https://github.com/ISP2024/movierental-tarothanawat/actions/workflows/python-publish.yml/badge.svg)](https://github.com/ISP2024/movierental-tarothanawat/actions/workflows/python-publish.yml)
 
 A classic refactoring problem from Chapter 1 of
 _Refactoring: Improving the Design of Existing Code_ by Martin Fowler.  
