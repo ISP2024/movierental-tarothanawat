@@ -1,5 +1,4 @@
 import unittest
-from customer import Customer
 from rental import Rental
 from movie import Movie
 from pricing import NewReleasePrice, RegularPrice, ChildrensPrice, price_strategy_for_movie
