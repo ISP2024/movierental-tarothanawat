@@ -62,7 +62,7 @@ def price_strategy_for_movie(movie) -> PriceStrategy:
     current_year = datetime.datetime.now().year
     if movie.year == current_year:
         return NewReleasePrice()
-    elif any(genre.lower() == "children" for genre in movie.genre):
+    elif any(genre.lower() == "children" or genre.lower() == 'childrens' for genre in movie.genre):
         return ChildrensPrice()
     else:
         return RegularPrice()
