@@ -1,5 +1,5 @@
 from movie import Movie
-from pricing import PriceStrategy
+from pricing import PriceStrategy, price_strategy_for_movie
 
 
 class Rental:
@@ -13,13 +13,13 @@ class Rental:
     For simplicity of this application only days_rented is recorded.
     """
     
-    def __init__(self, movie: Movie, days_rented, price_strategy: PriceStrategy):
+    def __init__(self, movie: Movie, days_rented):
         """Initialize a new movie rental object for
            a movie with known rental period (daysRented).
         """
         self.movie = movie
         self.days_rented = days_rented
-        self.price_strategy = price_strategy
+        self.price_strategy = price_strategy_for_movie(self.movie)
 
     def get_price_strategy(self):
         return self.price_strategy
@@ -36,4 +36,7 @@ class Rental:
 
     def get_rental_points(self):
         return self.price_strategy.get_rental_points(self.days_rented)
+
+
+
 

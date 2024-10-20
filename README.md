@@ -28,3 +28,10 @@ Ans: Feature Envy in Couplers.Because movie class should only have methods that 
 Ans: SRP aka. Single Responsibility Principle suggests this refactoring. Because a class should define only one thing, 
 Movie class should only have things that are related to movies such as title, release date, genre.
 
+# 5.2 Describe where you implement this method and the reasons for your choice. Include one or more of these design principles to justify your design and how it applies:
+
+**Low Coupling**: I placed price_strategy_for_movie function outside of any class (in the pricing.py module) minimizing the coupling between Rental and PriceStrategy
+**High Cohesion**: price_strategy_for_movie function is related to PriceStrategy class, so I put them together in the same module which is good for maintainability.
+**SRP**: now Movie and Rental class doesn't associate themselves with calculating the price. It gets done in pricing.py module
+**Information Expert**: The class Movie has year and genre attributes which is necessary for determining the price strategy.
+**Other**: If we decided to create a new price strategy we can easily implement it in the pricing.py module without having to change any code in Movie or Rental.

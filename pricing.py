@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+import datetime
 
 class PriceStrategy(ABC):
     """Abstract base class for rental pricing, implemented as a singleton for each subclass."""
@@ -55,3 +55,14 @@ class ChildrensPrice(PriceStrategy):
         if days > 3:
             amount += 1.5 * (days - 3)
         return amount
+
+
+def price_strategy_for_movie(movie) -> PriceStrategy:
+    """Determine the price strategy for a given movie."""
+    current_year = datetime.datetime.now().year
+    if movie.year == current_year:
+        return NewReleasePrice()
+    elif any(genre.lower() == "children" for genre in movie.genre):
+        return ChildrensPrice()
+    else:
+        return RegularPrice()
