@@ -15,10 +15,3 @@ class Movie:
 
     def __str__(self):
         return self.title
-
-    def get_price(self, days):
-        """Get price for rental per day."""
-        return self.price_strategy.get_price(days)
-
-    def get_rental_points(self, days):
-        return self.price_strategy.get_rental_points(days)
