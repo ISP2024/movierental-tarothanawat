@@ -1,5 +1,5 @@
 from movie import Movie
-from pricing import PriceStrategy, price_strategy_for_movie
+from pricing import price_strategy_for_movie
 
 
 class Rental:

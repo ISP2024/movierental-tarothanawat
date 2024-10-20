@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from typing import Collection
-import csv
-import pandas as pandas
-import pandas as pd
+import logging
+
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 @dataclass(frozen=True)
@@ -45,14 +45,24 @@ class MovieCatalog:
         try:
             with open('movies.csv', 'r') as file:
                 next(file)
-                for line in file:
+                for line_number, line in enumerate(file, start=2):  #
                     line = line.strip()
-                    if line:
-                        parts = line.split(',')
+                    if not line or line.startswith('#'):
+                        continue
+                    parts = line.split(',')
+                    if len(parts) < 4:
+                        logging.error(f"Line {line_number}: Unrecognized format '{line}'")
+                        continue
+
+                    try:
+                        movie_id = parts[0]
                         title = parts[1]
                         year = int(parts[2])
                         genres = parts[3].split('|')
                         movies.append(Movie(title, year, genres))
+                    except (ValueError, IndexError) as e:
+                        logging.error(f"Line {line_number}: Unrecognized format '{line}'")
+                        continue
         except FileNotFoundError:
             print("Movies file not found.")
         except Exception as e:

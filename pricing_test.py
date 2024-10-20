@@ -17,6 +17,3 @@ class PricingTest(unittest.TestCase):
         self.assertIsInstance(price_strategy_for_movie(self.childrens_movie), ChildrensPrice)
         self.assertIsInstance(price_strategy_for_movie(self.children_movie), ChildrensPrice)
 
-
-if __name__ == '__main__':
-    unittest.main()
