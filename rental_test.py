@@ -2,21 +2,20 @@ import unittest
 from customer import Customer
 from rental import Rental
 from movie import Movie
-from pricing import NewReleasePrice, RegularPrice, ChildrensPrice
+from pricing import NewReleasePrice, RegularPrice, ChildrensPrice, price_strategy_for_movie
 
 
 class RentalTest(unittest.TestCase):
     
     def setUp(self):
-        self.new_movie = Movie("Dune: Part Two",  NewReleasePrice())
-        self.regular_movie = Movie("Air",  RegularPrice())
-        self.childrens_movie = Movie("Frozen", ChildrensPrice())
+        self.new_movie = Movie("Dune: Part Two", 2024, ['Action', 'Fantasy'])
+        self.regular_movie = Movie("Air", 2000, ['Action'])
+        self.childrens_movie = Movie("Frozen", 2018, ['Children'])
 
     def test_movie_attributes(self):
         """trivial test to catch refactoring errors or change in API of Movie"""
-        m = Movie("Air", RegularPrice())
-        self.assertEqual("Air", m.get_title())
-        self.assertEqual(RegularPrice(), m.get_price_strategy())
+        self.assertEqual("Air (2000)", str(self.regular_movie))
+        self.assertIsInstance(price_strategy_for_movie(self.regular_movie), RegularPrice)
 
     def test_rental_price(self):
         rental = Rental(self.new_movie, 1)

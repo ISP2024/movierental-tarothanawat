@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import datetime
 
+
 class PriceStrategy(ABC):
     """Abstract base class for rental pricing, implemented as a singleton for each subclass."""
     _instances = {}

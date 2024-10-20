@@ -10,25 +10,20 @@ from customer import Customer
 def make_movies():
     """Some sample movies."""
     movies = [
-        Movie("Air", NewReleasePrice()),
-        Movie("Oppenheimer", RegularPrice()),
-        Movie("Frozen", ChildrensPrice()),
-        Movie("Bitconned", NewReleasePrice()),
-        Movie("Particle Fever", RegularPrice())
+        Movie("Air", 2008, ['Action']),
+        Movie("Oppenheimer", 2023, ['Documentary']),
+        Movie("Frozen", 2018, ['Children']),
+        Movie("Bitconned", 2024, ['Scam']),
+        Movie("Particle Fever", 2019, ['Comedy'])
     ]
     return movies
 
 
 if __name__ == '__main__':
     # Create a customer with some rentals
-    # customer = Customer("Edward Snowden")
-    # days = 1
-    # for movie in make_movies():
-    #     customer.add_rental(Rental(movie, days))
-    #     days = (days + 2) % 5 + 1
-    # print(customer.statement())
-    catalog = MovieCatalog()
-    movie = catalog.get_movie("Young Woman and the sea")
-    days = 4  # or PriceStrategy.NEW_RELEASE
-    rental = Rental(movie, days)
-    print(rental.get_price())
+    customer = Customer("Edward Snowden")
+    days = 1
+    for movie in make_movies():
+        customer.add_rental(Rental(movie, days))
+        days = (days + 2) % 5 + 1
+    print(customer.statement())
