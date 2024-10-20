@@ -12,6 +12,15 @@ class Movie:
     year: int
     genre: Collection[str] = field(default_factory=list)
 
+    def get_title(self):
+        return self.title
+
+    def get_year(self):
+        return self.year
+
+    def get_genre(self):
+        return self.genre
+
     def is_genre(self, string: str) -> bool:
         #  any: check if something exists in a collection.
         return any(g.lower() == string.lower().strip() for g in self.genre)
