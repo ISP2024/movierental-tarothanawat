@@ -2,7 +2,8 @@ import re
 import unittest 
 from customer import Customer
 from rental import Rental
-from movie import Movie, NewReleasePrice, ChildrensPrice, RegularPrice
+from movie import Movie
+from pricing import NewReleasePrice, RegularPrice, ChildrensPrice
 
 
 class CustomerTest(unittest.TestCase): 
